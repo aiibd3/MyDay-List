@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:myday/shared/styles/app_colors.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class TaskItem extends StatelessWidget {
   const TaskItem({super.key});
 
@@ -14,7 +14,7 @@ class TaskItem extends StatelessWidget {
           SlidableAction(
             onPressed: (context) {},
             icon: Icons.delete,
-            label: "Delete",
+            label: AppLocalizations.of(context)!.delete,
             backgroundColor: Colors.red,
             foregroundColor: Colors.white,
           ),
@@ -23,7 +23,7 @@ class TaskItem extends StatelessWidget {
             icon: Icons.edit,
             foregroundColor: Colors.white,
             backgroundColor: Colors.cyan,
-            label: "Edit",
+            label: AppLocalizations.of(context)!.edit,
           ),
         ],
       ),
@@ -61,15 +61,15 @@ class TaskItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "Task Title",
+                  Text(AppLocalizations.of(context)!.taskTitle
+                    ,
                     style: Theme.of(context).textTheme.bodySmall!.copyWith(
                           color: primary,
                         ),
                     textAlign: TextAlign.center,
                   ),
                   Text(
-                    "Task Description",
+                    AppLocalizations.of(context)!.taskDescription,
                     style: Theme.of(context).textTheme.bodySmall!.copyWith(
                           color: blueGrey,
                           fontSize: 16,

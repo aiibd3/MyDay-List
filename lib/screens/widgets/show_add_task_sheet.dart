@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:myday/shared/styles/app_colors.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ShowAddTaskSheet extends StatefulWidget {
   const ShowAddTaskSheet({super.key});
@@ -26,7 +27,7 @@ class _ShowAddTaskSheetState extends State<ShowAddTaskSheet> {
             SizedBox(
               height: MediaQuery.of(context).size.height * .01,
             ),
-            Text("Add New Task :)",
+            Text(AppLocalizations.of(context)!.addNewTask,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodySmall),
             SizedBox(
@@ -37,7 +38,7 @@ class _ShowAddTaskSheetState extends State<ShowAddTaskSheet> {
               child: TextFormField(
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return "Pleas Enter Task Title";
+                    return AppLocalizations.of(context)!.pleasEnterTaskTitle;
                   }
                   return null;
                 },
@@ -46,18 +47,18 @@ class _ShowAddTaskSheetState extends State<ShowAddTaskSheet> {
                     fontSize: 15,
                     fontWeight: FontWeight.w200,
                   ),
-                  label: const Text(
-                    "Task Title",
-                    style: TextStyle(
+                  label: Text(
+                    AppLocalizations.of(context)!.taskTitle,
+                    style: const TextStyle(
                         color: black,
                         fontSize: 18,
                         fontWeight: FontWeight.w400),
                   ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: const BorderSide(color: primary),
-                  ),
                   enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: const BorderSide(color: grey),
+                  ),
+                  focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: const BorderSide(color: primary),
                   ),
@@ -76,7 +77,8 @@ class _ShowAddTaskSheetState extends State<ShowAddTaskSheet> {
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return "Pleas Enter Task Description";
+                    return AppLocalizations.of(context)!
+                        .pleasEnterTaskDescription;
                   }
                   return null;
                 },
@@ -85,18 +87,18 @@ class _ShowAddTaskSheetState extends State<ShowAddTaskSheet> {
                     fontSize: 15,
                     fontWeight: FontWeight.w200,
                   ),
-                  label: const Text(
-                    "Task Description",
-                    style: TextStyle(
+                  label: Text(
+                    AppLocalizations.of(context)!.taskDescription,
+                    style: const TextStyle(
                         color: black,
                         fontSize: 18,
                         fontWeight: FontWeight.w400),
                   ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: const BorderSide(color: primary),
-                  ),
                   enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: const BorderSide(color: grey),
+                  ),
+                  focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: const BorderSide(color: primary),
                   ),
@@ -110,7 +112,7 @@ class _ShowAddTaskSheetState extends State<ShowAddTaskSheet> {
               width: double.infinity,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text("Select Time",
+                child: Text(AppLocalizations.of(context)!.selectTime,
                     style: Theme.of(context).textTheme.bodySmall,
                     textAlign: TextAlign.start),
               ),
@@ -144,9 +146,9 @@ class _ShowAddTaskSheetState extends State<ShowAddTaskSheet> {
                 onPressed: () {
                   if (formKey.currentState!.validate()) {}
                 },
-                child: const Text(
-                  "add",
-                  style: TextStyle(
+                child: Text(
+                  AppLocalizations.of(context)!.add,
+                  style: const TextStyle(
                     fontSize: 18,
                   ),
                 ),

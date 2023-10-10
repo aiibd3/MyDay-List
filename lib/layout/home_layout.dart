@@ -3,6 +3,7 @@ import 'package:myday/screens/settings_screen/settings_tab.dart';
 import 'package:myday/screens/tasks_screen/tasks_tab.dart';
 import 'package:myday/shared/styles/app_colors.dart';
 import '../screens/widgets/show_add_task_sheet.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeLayout extends StatefulWidget {
   static const String routeName = 'HomeLayout';
@@ -19,11 +20,12 @@ class _HomeLayoutState extends State<HomeLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: white,
       extendBody: true,
       appBar: AppBar(
-        title: const Text(
-          "MyDay",
-          style: TextStyle(
+        title: Text(
+          AppLocalizations.of(context)!.myDay,
+          style: const TextStyle(
             color: white,
             fontSize: 25,
             fontWeight: FontWeight.bold,

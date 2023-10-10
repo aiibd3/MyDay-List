@@ -1,6 +1,8 @@
 import 'package:calendar_timeline/calendar_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:myday/screens/tasks_screen/task_item.dart';
+import 'package:provider/provider.dart';
+import '../../providers/provider.dart';
 import '../../shared/styles/app_colors.dart';
 
 class TasksTab extends StatelessWidget {
@@ -10,12 +12,15 @@ class TasksTab extends StatelessWidget {
   Widget build(BuildContext context) {
     // var widthMQ = MediaQuery.of(context).size.width;
     var heightMQ = MediaQuery.of(context).size.height;
+    var provider = Provider.of<MProvider>(context);
+
     return Container(
       color: white,
       padding: const EdgeInsets.all(2),
       child: Column(
         children: [
           CalendarTimeline(
+
             initialDate: DateTime.now(),
             firstDate: DateTime(2000, 1, 1),
             lastDate: DateTime.now().add(const Duration(days: 36500)),
@@ -27,7 +32,7 @@ class TasksTab extends StatelessWidget {
             activeBackgroundDayColor: primary,
             dotsColor: white,
             // selectableDayPredicate: (date) => date.day != 23 //true,
-            locale: 'en',
+            locale: provider.languageCode,
           ),
           SizedBox(
             height: heightMQ * .01,

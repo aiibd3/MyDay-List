@@ -1,0 +1,19 @@
+{
+  "myDay": "myDay",
+  "add": "add",
+  "language": "Language",
+  "taskTitle": "Task Title",
+  "taskDescription": "Task Description",
+  "addNewTask": "Add New Task",
+  "selectTime": "Select Time",
+  "edit": "Edit",
+  "delete": "Delete",
+  "pleasEnterTaskTitle": "Pleas Enter Task Title",
+  "pleasEnterTaskDescription": "Pleas Enter Task Description",
+  "theming": "Theming",
+  "english": "English",
+  "arabic": "عربي",
+  "darkMode": "Dark Mode",
+  "lightMode": "Light Mode",
+  "setting": "Setting"
+}

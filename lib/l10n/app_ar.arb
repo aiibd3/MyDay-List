@@ -1,0 +1,20 @@
+{
+  "myDay": "يومي",
+  "add": "اضف",
+  "language": "اللغة",
+  "taskTitle": "عنوان المهمة",
+  "taskDescription": "موضوع المهمة",
+  "addNewTask": "اضف مهمة جديدة",
+  "selectTime": "حدد الوقت",
+  "edit": "تعديل",
+  "delete": "حذف",
+  "pleasEnterTaskTitle": "الرجاء ادخال عنوان المهمة",
+  "pleasEnterTaskDescription": "الرجاء ادخال موضوع المهمة",
+  "theming": "السمه",
+  "english": "english",
+  "arabic": "عربي",
+  "darkMode": "الوضع المظلم",
+  "lightMode": "وضع الضوء",
+  "setting": "الاعدادات"
+
+}
