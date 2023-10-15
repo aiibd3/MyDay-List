@@ -19,7 +19,6 @@ class ShowLanguagesSheetItem extends StatelessWidget {
       onTap: () {
         pro.changeLanguage(selectedName_);
         Navigator.pop(context);
-
       },
       child: Padding(
         padding: const EdgeInsets.all(10),
@@ -27,9 +26,7 @@ class ShowLanguagesSheetItem extends StatelessWidget {
           children: [
             Text(
               selectedName,
-              style: GoogleFonts.inter(
-                  color: primary ,
-                  fontSize: 25),
+              style: GoogleFonts.inter(color: primary, fontSize: 25),
             ),
             const Spacer(),
             const Icon(

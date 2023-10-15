@@ -15,5 +15,10 @@
   "arabic": "عربي",
   "darkMode": "Dark Mode",
   "lightMode": "Light Mode",
-  "setting": "Setting"
+  "setting": "Setting",
+  "youDoNotHavaAnyTasks": "You Don't Have Any Tasks",
+  "tryAgain": "Try Again!",
+  "somethingWentWrong": "Something Went Wrong !",
+  "taskEdit": "Task Edit",
+  "saveChanges":"Save Changes"
 }

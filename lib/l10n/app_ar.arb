@@ -11,10 +11,16 @@
   "pleasEnterTaskTitle": "الرجاء ادخال عنوان المهمة",
   "pleasEnterTaskDescription": "الرجاء ادخال موضوع المهمة",
   "theming": "السمه",
-  "english": "english",
+  "english": "English",
   "arabic": "عربي",
   "darkMode": "الوضع المظلم",
   "lightMode": "وضع الضوء",
-  "setting": "الاعدادات"
+  "setting": "الاعدادات",
+  "youDoNotHavaAnyTasks": "ليس لديك اي مهام",
+  "tryAgain": "حاول مره اخرى !",
+  "somethingWentWrong": "هناك خطأ ما !",
+  "taskEdit": "تعديل المهمه",
+  "saveChanges":"حفظ التعديلات"
+
 
 }

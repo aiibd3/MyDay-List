@@ -24,8 +24,7 @@ class ShowLanguagesSheet extends StatelessWidget {
             color: primary,
           ),
           ShowLanguagesSheetItem(
-
-              selectedName: AppLocalizations.of(context)!.arabic ,
+              selectedName: AppLocalizations.of(context)!.arabic,
               selectedName_: "ar"),
         ],
       ),

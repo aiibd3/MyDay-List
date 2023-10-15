@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myday/firebase/firebase_function.dart';
+import 'package:myday/models/task_model.dart';
 import 'package:myday/shared/styles/app_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -12,6 +14,10 @@ class ShowAddTaskSheet extends StatefulWidget {
 
 class _ShowAddTaskSheetState extends State<ShowAddTaskSheet> {
   var formKey = GlobalKey<FormState>();
+  var taskTitleController = TextEditingController();
+  var tasDescriptionController = TextEditingController();
+
+  DateTime selectDate = DateUtils.dateOnly(DateTime.now());
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +42,7 @@ class _ShowAddTaskSheetState extends State<ShowAddTaskSheet> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
+                controller: taskTitleController,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return AppLocalizations.of(context)!.pleasEnterTaskTitle;
@@ -71,6 +78,7 @@ class _ShowAddTaskSheetState extends State<ShowAddTaskSheet> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
+                controller: tasDescriptionController,
                 style: const TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w500,
@@ -125,7 +133,7 @@ class _ShowAddTaskSheetState extends State<ShowAddTaskSheet> {
                 chooseTaskDate(context);
               },
               child: Text(
-                "2003/2/7",
+                selectDate.toString().substring(0, 10),
                 textAlign: TextAlign.center,
                 style: GoogleFonts.inter(
                   fontSize: 20,
@@ -144,8 +152,19 @@ class _ShowAddTaskSheetState extends State<ShowAddTaskSheet> {
                   minimumSize: const Size(100, 40),
                 ),
                 onPressed: () {
-                  if (formKey.currentState!.validate()) {}
+                  if (formKey.currentState!.validate()) {
+                    TaskModel taskModel = TaskModel(
+                        title: taskTitleController.text,
+                        description: tasDescriptionController.text,
+                        status: false,
+                        date: selectDate.microsecondsSinceEpoch);
+
+                    FirebaseFunction.addTaskToFirebase(taskModel);
+                        Navigator.pop(context);
+
+                  }
                 },
+                // 2020-09-12
                 child: Text(
                   AppLocalizations.of(context)!.add,
                   style: const TextStyle(
@@ -163,8 +182,8 @@ class _ShowAddTaskSheetState extends State<ShowAddTaskSheet> {
     );
   }
 
-  void chooseTaskDate(BuildContext context) {
-    showDatePicker(
+  void chooseTaskDate(BuildContext context) async {
+    DateTime? chosenDate = await showDatePicker(
       context: context,
       builder: (context, child) {
         return Theme(
@@ -183,11 +202,15 @@ class _ShowAddTaskSheetState extends State<ShowAddTaskSheet> {
           child: child!,
         );
       },
-      initialDate: DateTime.now(),
+      initialDate: selectDate,
       firstDate: DateTime.now(),
       lastDate: DateTime.now().add(
         const Duration(days: 36500),
       ),
     );
+    if (chosenDate != null) {
+      selectDate = DateUtils.dateOnly(chosenDate);
+      setState(() {});
+    }
   }
 }

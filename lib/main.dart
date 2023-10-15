@@ -1,21 +1,25 @@
-// import 'package:device_preview/device_preview.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:myday/providers/provider.dart';
 import 'package:myday/screens/splash_screen/splash_screen.dart';
+import 'package:myday/screens/task_update/edit_screen.dart';
 import 'package:myday/shared/styles/my_theme.dart';
 import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 import 'layout/home_layout.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+// import 'package:device_preview/device_preview.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   /// [initialization before run app you should most add this line]
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await FirebaseFirestore.instance.disableNetwork();
   runApp(
     ChangeNotifierProvider<MProvider>(
       create: (context) => MProvider(),
@@ -62,6 +66,7 @@ class MyApp extends StatelessWidget {
       routes: {
         SplashScreen.routeName: (context) => const SplashScreen(),
         HomeLayout.routeName: (context) => const HomeLayout(),
+        EditTap.routeName: (context) =>  EditTap(),
       },
     );
   }
