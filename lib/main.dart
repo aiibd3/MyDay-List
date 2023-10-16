@@ -1,9 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:myday/providers/provider.dart';
 import 'package:myday/screens/splash_screen/splash_screen.dart';
-import 'package:myday/screens/task_update/edit_screen.dart';
 import 'package:myday/shared/styles/my_theme.dart';
 import 'package:provider/provider.dart';
 import 'firebase_options.dart';
@@ -19,7 +18,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await FirebaseFirestore.instance.disableNetwork();
+  // await FirebaseFirestore.instance.disableNetwork();
   runApp(
     ChangeNotifierProvider<MProvider>(
       create: (context) => MProvider(),
@@ -66,7 +65,7 @@ class MyApp extends StatelessWidget {
       routes: {
         SplashScreen.routeName: (context) => const SplashScreen(),
         HomeLayout.routeName: (context) => const HomeLayout(),
-        EditTap.routeName: (context) =>  EditTap(),
+        // EditTap.routeName: (context) =>  EditTap(),
       },
     );
   }

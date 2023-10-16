@@ -14,15 +14,17 @@ class TaskItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Colors.transparent,
       elevation: 5,
-      color: Colors.blueGrey[10],
-      shadowColor: black,
-      margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+      margin: EdgeInsets.symmetric(horizontal: 18,vertical: 8),
       child: Slidable(
         startActionPane: ActionPane(
           motion: const DrawerMotion(),
+
           children: [
             SlidableAction(
+              // flex: 2,
+
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(12),
                 topLeft: Radius.circular(12),
@@ -37,19 +39,21 @@ class TaskItem extends StatelessWidget {
             ),
             SlidableAction(
               onPressed: (context) {
-                Navigator.pushNamed(context, EditTap.routeName,
-                    arguments: taskModel);
+                Navigator.push(context,MaterialPageRoute(builder: (context) {
+                  return EditTap(task: taskModel);
+                },));
                 FirebaseFunction.updateTask(taskModel.id, taskModel);
               },
               icon: Icons.edit,
+
               foregroundColor: Colors.white,
               backgroundColor: Colors.cyan,
               label: AppLocalizations.of(context)!.edit,
             ),
           ],
         ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(10),
+        child: Container(
+          color: Colors.white,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -57,7 +61,9 @@ class TaskItem extends StatelessWidget {
                 width: MediaQuery.of(context).size.width * .02,
               ),
               Container(
-                height: 80,
+                height: 60,
+                margin: EdgeInsets.symmetric(vertical: 8),
+                // padding:EdgeInsets.symmetric(vertical: 8),
                 decoration: BoxDecoration(
                   color: primary,
                   borderRadius: BorderRadius.circular(25),

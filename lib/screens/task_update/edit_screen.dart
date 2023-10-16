@@ -9,23 +9,24 @@ import '../../providers/provider.dart';
 
 class EditTap extends StatefulWidget {
   static String routeName = "EditTap";
+  TaskModel task;
+  var titleController = TextEditingController();
+  var descriptionController = TextEditingController();
+late  DateTime dateController;
+
+  EditTap({required this.task}) {
+    titleController.text = task.title;
+    descriptionController.text = task.description;
+    dateController = DateTime.fromMicrosecondsSinceEpoch(task.date);
+  }
 
   @override
   State<EditTap> createState() => _EditTapState();
 }
 
 class _EditTapState extends State<EditTap> {
-  var titleController = TextEditingController();
-  var descriptionController = TextEditingController();
-
-  DateTime dateController = DateTime.now();
-
   @override
   Widget build(BuildContext context) {
-    var task = ModalRoute.of(context)!.settings.arguments as TaskModel;
-    titleController.text = task.title;
-    descriptionController.text = task.description;
-
     var pro = Provider.of<MProvider>(context);
 
     return Scaffold(
@@ -55,15 +56,15 @@ class _EditTapState extends State<EditTap> {
               height: MediaQuery.of(context).size.height * .03,
             ),
             TextFormField(
-              controller: titleController,
+
+              controller: widget.titleController,
               style: const TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
               ),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return AppLocalizations.of(context)!
-                      .pleasEnterTaskDescription;
+                  return AppLocalizations.of(context)!.pleasEnterTaskTitle;
                 }
                 return null;
               },
@@ -73,7 +74,7 @@ class _EditTapState extends State<EditTap> {
                   fontWeight: FontWeight.w200,
                 ),
                 label: Text(
-                  AppLocalizations.of(context)!.taskDescription,
+                  AppLocalizations.of(context)!.taskTitle,
                   style: const TextStyle(
                       color: black, fontSize: 18, fontWeight: FontWeight.w400),
                 ),
@@ -91,7 +92,8 @@ class _EditTapState extends State<EditTap> {
               height: MediaQuery.of(context).size.height * .03,
             ),
             TextFormField(
-              controller: descriptionController,
+
+              controller:widget.descriptionController,
               style: const TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
@@ -156,14 +158,14 @@ class _EditTapState extends State<EditTap> {
                       child: child!,
                     );
                   },
-                  initialDate: dateController,
-                  firstDate: DateTime.now(),
+                  initialDate: widget.dateController,
+                  firstDate:DateTime.now(),
                   lastDate: DateTime.now().add(
                     const Duration(days: 365),
                   ),
                 );
                 if (chosenDate != null) {
-                  dateController = DateUtils.dateOnly(chosenDate);
+                  widget.dateController = DateUtils.dateOnly(chosenDate);
                   setState(() {});
                 }
               },
@@ -179,7 +181,7 @@ class _EditTapState extends State<EditTap> {
               height: MediaQuery.of(context).size.height * .01,
             ),
             Text(
-              dateController.toString().substring(0, 10),
+              widget.dateController.toString().substring(0, 10),
               textAlign: TextAlign.center,
               style: GoogleFonts.inter(
                 fontSize: 20,
@@ -197,10 +199,11 @@ class _EditTapState extends State<EditTap> {
                 ),
               ),
               onPressed: () {
-                task.title = titleController.text;
-                task.description = descriptionController.text;
-                task.date = dateController.microsecondsSinceEpoch;
-                FirebaseFunction.updateTask(task.id, task);
+                widget.task.title = widget.titleController.text;
+                widget.task.description = widget.descriptionController.text;
+                widget.task.date = widget.dateController.microsecondsSinceEpoch;
+                FirebaseFunction.updateTask(widget.task.id, widget.task);
+
                 Navigator.pop(context);
               },
               child: Text(
