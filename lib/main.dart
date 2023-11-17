@@ -45,6 +45,7 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       title: 'Flutter Demo',
+
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -59,6 +60,7 @@ class MyApp extends StatelessWidget {
         // Locale('ar','sa'), // Arabic ,Saudi Arabia
       ],
       theme: MyThemeData.lightTheme,
+      darkTheme: MyThemeData.darkTheme,
       themeMode: ThemeMode.light,
       debugShowCheckedModeBanner: false,
       initialRoute: SplashScreen.routeName,

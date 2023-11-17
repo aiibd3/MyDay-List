@@ -30,16 +30,17 @@ class _HomeLayoutState extends State<HomeLayout> {
       appBar: AppBar(
         title: Text(
           AppLocalizations.of(context)!.myDay,
-          style:pro.languageCode=="en" ? GoogleFonts.aBeeZee(
-            color: white,
-            fontSize: 25,
-            fontWeight: FontWeight.bold,
-          ): GoogleFonts.mada(
-            color: white,
-            fontSize: 25,
-            fontWeight: FontWeight.bold,
-          ),
-
+          style: pro.languageCode == "en"
+              ? GoogleFonts.aBeeZee(
+                  color: white,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                )
+              : GoogleFonts.mada(
+                  color: white,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

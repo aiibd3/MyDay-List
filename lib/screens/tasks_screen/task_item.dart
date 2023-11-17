@@ -23,8 +23,6 @@ class TaskItem extends StatelessWidget {
 
           children: [
             SlidableAction(
-              // flex: 2,
-
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(12),
                 topLeft: Radius.circular(12),

@@ -12,7 +12,7 @@ class EditTap extends StatefulWidget {
   TaskModel task;
   var titleController = TextEditingController();
   var descriptionController = TextEditingController();
-late  DateTime dateController;
+  late DateTime dateController;
 
   EditTap({required this.task}) {
     titleController.text = task.title;
@@ -56,7 +56,6 @@ class _EditTapState extends State<EditTap> {
               height: MediaQuery.of(context).size.height * .03,
             ),
             TextFormField(
-
               controller: widget.titleController,
               style: const TextStyle(
                 fontSize: 12,
@@ -92,8 +91,7 @@ class _EditTapState extends State<EditTap> {
               height: MediaQuery.of(context).size.height * .03,
             ),
             TextFormField(
-
-              controller:widget.descriptionController,
+              controller: widget.descriptionController,
               style: const TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
@@ -159,7 +157,7 @@ class _EditTapState extends State<EditTap> {
                     );
                   },
                   initialDate: widget.dateController,
-                  firstDate:DateTime.now(),
+                  firstDate: DateTime.now(),
                   lastDate: DateTime.now().add(
                     const Duration(days: 365),
                   ),
